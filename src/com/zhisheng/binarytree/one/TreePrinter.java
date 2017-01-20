@@ -16,11 +16,11 @@ public class TreePrinter {
         if(root == null){
             return null;
         }
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();    //提前准备一个队列queue
         ArrayList<Integer> arr = new ArrayList<Integer>();
         ArrayList<ArrayList<Integer>> layer = new ArrayList<ArrayList<Integer>>();
-        TreeNode last = root;
-        TreeNode nlast = null;
+        TreeNode last = root;       //正在打印的当前行的最右节点
+        TreeNode nlast = null;      //下一行的最右节点
         queue.add(root);
         while(!queue.isEmpty()){
             TreeNode tem = queue.poll();//出队，将孩子添加进去
@@ -39,6 +39,8 @@ public class TreePrinter {
                 last = nlast;
             }
         }
+
+        //转换成二维数组
         int[][] num = new int[layer.size()][];
         for(int i=0;i<layer.size();i++){
             num[i] = new int[layer.get(i).size()];//数组赋值前要确定长度
